@@ -28,11 +28,11 @@ public enum DataType {
         if (value instanceof Boolean) {
             type = Data_Type_Boolean;
         } else if (value instanceof Integer) {
-            type = Data_Type_Int;
+            type = Data_Type_String;
         } else if (value instanceof Double) {
-            type = Data_Type_Double;
+            type = Data_Type_String;
         } else if (value instanceof Long) {
-            type = Data_Type_long;
+            type = Data_Type_String;
         } else if (value instanceof String) {
             type = Data_Type_String;
         } else if (value instanceof JSONObject) {
@@ -50,10 +50,10 @@ public enum DataType {
             return Data_Type_Boolean;
         }
         if ("Integer".equals(type) || "int".equals(type)) {
-            return Data_Type_Int;
+            return Data_Type_String;
         }
         if ("long".equals(type) || "Long".equals(type)) {
-            return Data_Type_long;
+            return Data_Type_String;
         }
         if ("String".equals(type) || "String".equals(type)) {
             return Data_Type_String;

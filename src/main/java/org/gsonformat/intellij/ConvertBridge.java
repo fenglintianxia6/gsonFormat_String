@@ -5,6 +5,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
 import com.intellij.psi.impl.source.PsiClassReferenceType;
 import com.intellij.psi.util.PsiTypesUtil;
+import java.util.*;
 import org.apache.http.util.TextUtils;
 import org.gsonformat.intellij.action.DataWriter;
 import org.gsonformat.intellij.common.CheckUtil;
@@ -24,7 +25,6 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -296,7 +296,7 @@ public class ConvertBridge {
             if (fieldEntity == null) {
                 fieldEntity = new FieldEntity();
             }
-            fieldEntity.setType(type.getPresentableText());
+            fieldEntity.setType(type.getPresentableText().equals("boolean") ? "boolean" : "String");
             return fieldEntity;
         } else if (type instanceof PsiArrayType) {
             if (fieldEntity == null) {
@@ -362,13 +362,13 @@ public class ConvertBridge {
                 fieldEntity.setType("Boolean");
                 break;
             case "java.lang.Integer":
-                fieldEntity.setType("Integer");
+                fieldEntity.setType("String");
                 break;
             case "java.lang.Double":
-                fieldEntity.setType("Double");
+                fieldEntity.setType("String");
                 break;
             case "java.lang.Long":
-                fieldEntity.setType("Long");
+                fieldEntity.setType("String");
                 break;
             default:
                 ClassEntity classEntity = declareClass.get(psi.getQualifiedName());

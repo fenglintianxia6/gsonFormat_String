@@ -164,19 +164,10 @@ public abstract class Processor {
                 }
             }
 
-            String method = "public void  set".concat(captureName(fieldName)).concat("( ").concat(typeStr).concat(" ").concat(arg).concat(") {   ");
-            if (field.getGenerateFieldName().equals(arg)) {
-                method = method.concat("this.").concat(field.getGenerateFieldName()).concat(" = ").concat(arg).concat(";} ");
-            } else {
-                method = method.concat(field.getGenerateFieldName()).concat(" = ").concat(arg).concat(";} ");
-            }
-
-            String finalMethod = method;
             String finalFieldName = fieldName;
             Try.run(new Try.TryListener() {
                 @Override
                 public void run() {
-                    cls.add(factory.createMethodFromText(finalMethod, cls));
                 }
 
                 @Override
